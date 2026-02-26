@@ -1,14 +1,15 @@
-<router-outlet class="rutas">
-    <button (click)="ruta('z')"> Home </button>
-    <button (click)="ruta('p')"> Ver Productos </button>
-    <button (click)="ruta('f')"> Agregar productos</button>
-    <section *ngIf="componenteMostrar=='p'" id="arr">
-      <input [(ngModel)]="alto"  type="number" placeholder="Precio máximo">
-      <input [(ngModel)]="bajo"  type="number" placeholder="Precio mínimo">
-      <button (click)="filtrarPorPrecio(bajo,alto)">Filtrar</button>
-      <button (click)="limpiarFiltro()">Limpiar</button>
-    </section>
-  </router-outlet>
+<router-outlet></router-outlet>
+<section class="rutas">
+  <button (click)="ruta('z')"> Home </button>
+  <button (click)="ruta('p')"> Ver Productos </button>
+  <button (click)="ruta('f')"> Agregar productos</button>
+  <section *ngIf="componenteMostrar=='p'" id="arr">
+    <input [(ngModel)]="alto"  type="number" placeholder="Precio máximo">
+    <input [(ngModel)]="bajo"  type="number" placeholder="Precio mínimo">
+    <button (click)="filtrarPorPrecio(bajo,alto)">Filtrar</button>
+    <button (click)="limpiarFiltro()">Limpiar</button>
+  </section>
+  </section>
   <section [ngSwitch]="componenteMostrar">
     <app-products *ngSwitchCase="'p'" [lista]="productosFiltrados" (seleccionar)="deleteProduct($event)"></app-products>
     <app-form-products (agregar)="agregar($event)" *ngSwitchCase ="'f'">

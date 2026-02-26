@@ -1,10 +1,5 @@
-import { Component, Signal } from '@angular/core';
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
+import { Component } from '@angular/core';
+import { Product } from './productsModel';
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
@@ -12,15 +7,15 @@ interface Product {
   styleUrls: ['./app.scss']
 })
 export class App {
-  bajo=0 ;
-  alto=0 ;
+  bajo: number | null =null ;
+  alto: number | null=null ;
   componenteMostrar ="";
   productosFiltrados: Product[] = [];
   
   ngOnInit() {
     this.productosFiltrados = [...this.products];
   }
-  products = [
+  products: Product[] = [
     { id: 1, name: 'Champu', price: 2000 },
     { id: 2, name: 'Arroz', price: 2200 },
     {
@@ -44,29 +39,23 @@ export class App {
     this.products.push(product);
     this.igual();
   }
-  filtroPrecio(a:number,b:number){
-    for (let i = 0; i < this.products.length; i++) {
-      if(this.products[i].price >= a && this.products[i].price <= b){
-        this.products[i];
-      }
-    }
-  }
   igual(){
     this.productosFiltrados = [...this.products];
   }
 
-  filtrarPorPrecio(bajo: number, alto: number) {
-    const precioMin = bajo || 0;
-    const precioMax = alto || Infinity;
-
-    this.productosFiltrados = this.products.filter(p => 
-      p.price >= precioMin && p.price <= precioMax
-    );
+  filtrarPorPrecio(bajo: number | null, alto: number | null) {
+  const precioMin = bajo ?? 0;
+  const precioMax = alto ?? Infinity;
+  
+  this.productosFiltrados = this.products.filter(p => {
+    const precioProducto = p.price ?? 0;
+    return precioProducto >= precioMin && precioProducto <= precioMax;
+  });
   }
 
   limpiarFiltro() {
-    this.alto = 0;
-    this.bajo = 0;
+    this.alto = null;
+    this.bajo = null;
     this.productosFiltrados = [...this.products];
   }
 }

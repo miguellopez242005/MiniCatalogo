@@ -1,11 +1,6 @@
 import { Component,Output,EventEmitter  } from '@angular/core';
-import { isEmpty } from 'rxjs';
+import { Product } from '../../productsModel';
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
 @Component({
   standalone: false,
   selector: 'app-form-products',
@@ -13,14 +8,14 @@ interface Product {
   styleUrls: ['./form-products.scss'],
 })
 export class FormProducts {
-nuevo: Product = { id:0, name: '', price:0};
+nuevo: Product = { id:null, name: '', price:null};
 
 @Output() agregar = new EventEmitter<Product>();
 
 agregarProducto() {
-  if (this.nuevo.id != null && this.nuevo.name != "" && this.nuevo.price != null) {
+  if (typeof this.nuevo.id === 'number' && this.nuevo.name.trim() !== '' && typeof this.nuevo.price === 'number') {
     this.agregar.emit({ ...this.nuevo });
-    this.nuevo = {id:0,name:"",price:0};
+    this.nuevo = {id:null,name:"",price:null};
   }
 }
 

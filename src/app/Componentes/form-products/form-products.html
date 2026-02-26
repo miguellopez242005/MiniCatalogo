@@ -1,6 +1,10 @@
 <div class="form">
-    <input [(ngModel)]="nuevo.id" type="number">
-    <input [(ngModel)]="nuevo.name" type="text">
-    <input [(ngModel)]="nuevo.price" type="number">
-    <button (click)="agregarProducto()">Agregar</button>
+    <input [(ngModel)]="nuevo.id" type="number" placeholder="ID del producto">
+    <input [(ngModel)]="nuevo.name" type="text" placeholder="Nombre del producto">
+    <input [(ngModel)]="nuevo.price" type="number" placeholder="Precio ($)">
+    
+    <button (click)="agregarProducto()" 
+            [disabled]="!nuevo.id || !nuevo.name || !nuevo.price">
+      Agregar Producto
+    </button>
 </div>
