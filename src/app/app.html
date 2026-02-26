@@ -1,0 +1,22 @@
+<router-outlet class="rutas">
+    <button (click)="ruta('z')"> Home </button>
+    <button (click)="ruta('p')"> Ver Productos </button>
+    <button (click)="ruta('f')"> Agregar productos</button>
+    <section *ngIf="componenteMostrar=='p'" id="arr">
+      <input [(ngModel)]="alto"  type="number" placeholder="Precio máximo">
+      <input [(ngModel)]="bajo"  type="number" placeholder="Precio mínimo">
+      <button (click)="filtrarPorPrecio(bajo,alto)">Filtrar</button>
+      <button (click)="limpiarFiltro()">Limpiar</button>
+    </section>
+  </router-outlet>
+  <section [ngSwitch]="componenteMostrar">
+    <app-products *ngSwitchCase="'p'" [lista]="productosFiltrados" (seleccionar)="deleteProduct($event)"></app-products>
+    <app-form-products (agregar)="agregar($event)" *ngSwitchCase ="'f'">
+  </app-form-products>
+  <div class="home" *ngSwitchDefault>
+    <h2>
+        Bienvenido al mini catálogo de productos, para ver los productos haz click en el botón "Ver Productos" y para agregar un nuevo producto haz click en el botón "Agregar productos"
+    </h2>
+  </div>
+</section>
+

@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.rutas {
+  position: relative;
+  display: grid;
+  grid-template-rows: 50px 50px 50px;
+  gap: 1.5rem;
+  background: #dadada;
+  border-radius: 12px;
+  margin: 1.2em;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(126, 26, 26, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width:12%;
+}
+
+
+.home{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  z-index: 10;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 50vh;
+  margin: 1%;
+  background: #0f0f0f;
+}
+
+.home h2{
+  width: 80%;
+  padding: 2%;
+  font-size: 2rem;
+  background: rgb(41, 95, 109);
+  color: #e2d5d5;
+  text-align: center;
+  border-radius: 1.5%;
+  box-shadow: 0 10px 25px rgba(126, 26, 26, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}

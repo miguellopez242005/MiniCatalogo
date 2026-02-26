@@ -1,0 +1,7 @@
+<section class="Productos">
+  <article *ngFor="let p of lista; let i = index" class="card">
+    <h2>{{ p.name }}</h2>
+    <p>{{ p.price }}</p>
+    <button (click)="seleccionado(i)">Eliminar</button>
+  </article>
+</section>
