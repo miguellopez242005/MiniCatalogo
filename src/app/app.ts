@@ -9,6 +9,7 @@ import { Product } from './productsModel';
 export class App {
   bajo: number | null =null ;
   alto: number | null=null ;
+  ordenAscendente: boolean = true;
   componenteMostrar ="";
   productosFiltrados: Product[] = [];
   
@@ -58,4 +59,11 @@ export class App {
     this.bajo = null;
     this.productosFiltrados = [...this.products];
   }
+ordenar() {
+  this.ordenAscendente = !this.ordenAscendente;
+
+  this.productosFiltrados.sort((a, b) => 
+    this.ordenAscendente ? (a.price ?? 0) - (b.price ?? 0) : (b.price ?? 0) - (a.price ?? 0)
+  );
+}
 }

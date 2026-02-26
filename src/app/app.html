@@ -3,7 +3,11 @@
   <button (click)="ruta('z')"> Home </button>
   <button (click)="ruta('p')"> Ver Productos </button>
   <button (click)="ruta('f')"> Agregar productos</button>
-  <section *ngIf="componenteMostrar=='p'" id="arr">
+  <section *ngIf="componenteMostrar=='p'" class="extras">
+    <button (click)="ordenar()">
+      Ordenar por Precio 
+      {{ ordenAscendente ? '↑' : '↓' }}
+    </button>
     <input [(ngModel)]="alto"  type="number" placeholder="Precio máximo">
     <input [(ngModel)]="bajo"  type="number" placeholder="Precio mínimo">
     <button (click)="filtrarPorPrecio(bajo,alto)">Filtrar</button>
@@ -11,7 +15,8 @@
   </section>
   </section>
   <section [ngSwitch]="componenteMostrar">
-    <app-products *ngSwitchCase="'p'" [lista]="productosFiltrados" (seleccionar)="deleteProduct($event)"></app-products>
+    <app-products *ngSwitchCase="'p'" [lista]="productosFiltrados" (seleccionar)="deleteProduct($event)">
+    </app-products>
     <app-form-products (agregar)="agregar($event)" *ngSwitchCase ="'f'">
   </app-form-products>
   <div class="home" *ngSwitchDefault>
