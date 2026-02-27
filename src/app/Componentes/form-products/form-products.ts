@@ -1,5 +1,5 @@
 import { Component,Output,EventEmitter  } from '@angular/core';
-import { Product } from '../../productsModel';
+import { Product } from '../../model/productsModel';
 
 @Component({
   standalone: false,
